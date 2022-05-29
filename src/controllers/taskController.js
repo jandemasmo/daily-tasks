@@ -2,6 +2,7 @@ const TaskSchema = require("../models/taskSchema");
 const expressValidator = require("express-validator");
 
 
+
 const getAllTask = async (req, res) => {
     try {
         const tasks  = await TaskSchema.find({authorTask: req.user._id});
@@ -20,7 +21,7 @@ const getAllTask = async (req, res) => {
 const getTask = async (req, res) => {
     try {
         const { id } = req.params;
-        const task = await TaskSchema.findById({_id: id})
+        const task = await TaskSchema.find({_id: id, authorTask: req.user._id})
         res.status(200).json({message: {task}})
     } catch (error) {
         res.status(500).json({message: {error: "Erro interno tente novamente"}})
@@ -44,11 +45,26 @@ const addTask = async (req, res) => {
 }
 
 const updateTask = async (req, res) => {
-
+    try {
+        taskExists = await TaskSchema.findOne({_id: req.params.id, authorTask: req.user._id})
+        if(taskExists){
+            taskExists.title = req.body.title || taskExists.title
+            taskExists.body = req.body.body || taskExists.body
+        }
+        await taskExists.save()
+        res.status(200).json({message: {sucess: "Task atualizada com sucesso!", taskExists}})
+    } catch (error) {
+        res.status(500).json({message: {error: "Erro interno tente novamente"}})
+    }
 }
 
 const deleteTask = async (req, res) => {
-
+    try {
+        await TaskSchema.findOneAndDelete({_id: req.params.id, authorTask: req.user._id})
+        res.status(200).json({message: {sucess: "Task deletada com sucesso!"}})
+    } catch (error) {
+        res.status(500).json({message: {error: "Erro interno tente novamente"}})
+    }
 }
 
 module.exports = {
