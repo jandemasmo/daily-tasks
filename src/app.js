@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const database = require("../config/database");
 const homeRouter = require("./routers/homeRouter");
+const taskRouter = require("./routers/taskRouter");
 require("dotenv-safe").config();
 
 
@@ -13,6 +14,7 @@ app.use(cors());
 
 
 app.use("/", homeRouter );
+app.use("/task", taskRouter);
 
 
 

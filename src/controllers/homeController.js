@@ -2,17 +2,12 @@ const UserSchema = require("../models/userSchema");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const expressValidator = require("express-validator");
-const { Result } = require("express-validator");
 
 const home = (req, res) => {
-    res.status(200).json({message: "Aqui é a home"});
+    res.status(200).json({message: {teste: "Aqui é a home"}});
 }
 
-const login = (req, res) => {
-    res.status(200).json({message: "Aqui é a tela de login"});
-}
-
-const loginUser = async (req, res) => {
+const login = async (req, res) => {
     try {
         const errors = expressValidator.validationResult(req).formatWith(({msg}) => {
             return msg
@@ -39,11 +34,7 @@ const loginUser = async (req, res) => {
     }
 }
 
-const register = (req, res) => {
-    res.status(200).render("pages/register");
-}
-
-const registerUser = async (req, res) => {
+const register = async (req, res) => {
 
     try {
         const errors = expressValidator.validationResult(req).formatWith(({msg}) => {
@@ -76,7 +67,5 @@ const registerUser = async (req, res) => {
 module.exports = {
     home,
     login,
-    loginUser,
     register,
-    registerUser
 }
