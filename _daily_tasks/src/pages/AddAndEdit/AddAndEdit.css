@@ -1,0 +1,36 @@
+.form_add_end_edit{
+    display: flex;
+    flex-direction: column;
+    
+}
+.form_add_end_edit input,
+.form_add_end_edit textarea {
+    border-radius: 1rem;
+    border:none;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    -webkit-box-shadow: 10px 10px 9px -7px rgba(0,0,0,0.37);
+    -moz-box-shadow: 10px 10px 9px -7px rgba(0,0,0,0.37);
+     box-shadow: 10px 10px 9px -7px rgba(0,0,0,0.37);
+     cursor: pointer;
+     transition: 0.5s;
+}
+.form_add_end_edit input{
+    height: 4.3rem;
+}
+.button_form_edit{
+    background-color: var(--primary-color);
+    font-weight: bold;
+    color: #ffffff;
+    height: 4.3rem;
+    border-radius: 1rem;
+    border:none;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    -webkit-box-shadow: 10px 10px 9px -7px rgba(0,0,0,0.37);
+    -moz-box-shadow: 10px 10px 9px -7px rgba(0,0,0,0.37);
+     box-shadow: 10px 10px 9px -7px rgba(0,0,0,0.37);
+     cursor: pointer;
+     transition: 0.5s;
+     max-width: 10rem;
+}

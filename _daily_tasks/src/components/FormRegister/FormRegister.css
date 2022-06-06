@@ -1,0 +1,55 @@
+
+.content--form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.form--sign--in--out{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 28rem;
+    width: 100%;
+}
+.form--sign--in--out .brand{
+    margin-bottom: 1rem;
+}
+.form--sign--in--out .input--content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.content--form .form--sign--in--out .input--content  input,
+.content--form .form--sign--in--out .input--content button{
+    width: 100%;
+    height: 4.3rem;
+    border-radius: 1rem;
+    border:none;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    -webkit-box-shadow: 10px 10px 9px -7px rgba(0,0,0,0.37);
+    -moz-box-shadow: 10px 10px 9px -7px rgba(0,0,0,0.37);
+     box-shadow: 10px 10px 9px -7px rgba(0,0,0,0.37);
+     cursor: pointer;
+     transition: 0.5s;
+}
+.form--sign--in--out .input--content button{
+    background-color: var(--primary-color);
+    font-weight: bold;
+    color: #ffffff;
+}
+.form--sign--in--out .input--content button:hover{
+    background-color: var(--primary-color-hover);
+}
+
+.input--message{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: red;
+}

@@ -1,3 +1,18 @@
+
+/*topheader*/
+.topheader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--header-and-foonter);
+    height:8rem ;
+}
+.topheader .menu nav{
+    display: none;
+}
+
+
 /*register*/
 .content--form{
     display: flex;
@@ -52,19 +67,6 @@
     justify-content: center;
     font-size: 1.2rem;
     color: red;
-}
-
-/*topheader*/
-.topheader{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: var(--header-and-foonter);
-    height:8rem ;
-}
-.topheader .menu nav{
-    display: none;
 }
 
 /*index.html */

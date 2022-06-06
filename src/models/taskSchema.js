@@ -8,7 +8,7 @@ const taskSchema = new mongoose.Schema({
     updateAt: { type: Date, default: Date.now},
     authorTask: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "userSchema",
+        ref: "UserSchema",
         required: true
     } 
 })
