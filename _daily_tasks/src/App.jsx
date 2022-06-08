@@ -11,7 +11,7 @@ export function App(){
         <Routes>
             <Route path="/dashboard" element={<Home/>} />
             <Route path="/register" element={<Register/>} />
-            <Route path="/" element={<Login/>} />
+            <Route path="/login" element={<Login/>} />
             <Route path="/task" element={<SingleTask/>} />
             <Route path="/addtask" element={<AddAndEdit/>} />
             <Route path="/updatetask" element={<AddAndEdit/>} />

@@ -1,12 +1,39 @@
 import "./FormRegister.css";
+import {useState} from "react";
+import {Navigate} from "react-router-dom";
+import UsersService from "../../services/usersService";
 
 export function FormRegister() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState(false);
+    const [redirectToLogin, setRedirectToLogin] = useState(false);
+    const [messageError, setMessageError] = useState();
 
+    const HandleSubmit = async (event)=>{
+        event.preventDefault();
+        try {
+            const user = await UsersService.register({name: name, email: email, password: password});
+            setRedirectToLogin(true)
+        } catch (error) {
+            for(let key in error.response.data.message){
+                setMessageError(error.response.data.message[key])
+            }
+            setError(true)
+        }
+    }
+
+
+
+    if(redirectToLogin){
+        return <Navigate to="/login"/>
+    }
 
     return (
         <div className="content">
             <div className="content--form">
-                <form method="post" action="#" className="form--sign--in--out" id="form_register">
+                <form onSubmit={HandleSubmit} className="form--sign--in--out" id="form_register">
                     <div className="brand">
                         <a href="#">
                             <svg width="1316" height="203" viewBox="0 0 1316 203" fill="none"
@@ -33,11 +60,11 @@ export function FormRegister() {
                         </a>
                     </div>
                     <div className="input--content">
-                        <input type="text" placeholder="Nome" name="name" id="name" />
-                        <input type="text" placeholder="E-mail" name="email" id="email" />
-                        <input type="text" placeholder="Senha" name="password" id="password" />
+                        <input type="text" placeholder="Nome" name="name" id="name" value={name} onChange={event => setName(event.target.value)} />
+                        <input type="text" placeholder="E-mail" name="email" id="email" value={email} onChange={event => setEmail(event.target.value)}/>
+                        <input type="text" placeholder="Senha" name="password" id="password" value={password} onChange={event => setPassword(event.target.value)} />
                         <button className="button-default button_form_register" >Cadastrar</button>
-                        <div id="box_message"></div>
+                        {error && <div className="input--message">{messageError}</div>}
                     </div>
                 </form>
             </div>

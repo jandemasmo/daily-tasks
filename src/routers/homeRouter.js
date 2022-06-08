@@ -6,7 +6,7 @@ const loginValidator = require("../../middlewares/loginValidator");
 
 
 router.get("/", homeController.home );
-router.post("/register", registerValidator.validator, homeController.login );
+router.post("/register", registerValidator.validator, homeController.register );
 router.post("/login", loginValidator.validator, homeController.login );
 
 

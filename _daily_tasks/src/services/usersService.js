@@ -1,9 +1,9 @@
 import Api from "./api";
 
-const usersService = {
-    register: (params) => {
-        Api.post("/register", params);
-    }
+const UsersService = {
+    register: (params) => Api.post("/register", params),
+    
 }
 
-export default usersService;
+export default UsersService;
+
