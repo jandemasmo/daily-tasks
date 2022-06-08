@@ -6,7 +6,7 @@ export function Login() {
     return (
         <div>
             <Header />
-                 <FormLogin/>
+            <FormLogin/>
             <Footer />
         </div>
     )

@@ -9,9 +9,9 @@ import { AddAndEdit } from "./pages/AddAndEdit";
 export function App(){
     return (
         <Routes>
-            <Route path="/" element={<Home/>} />
+            <Route path="/dashboard" element={<Home/>} />
             <Route path="/register" element={<Register/>} />
-            <Route path="/login" element={<Login/>} />
+            <Route path="/" element={<Login/>} />
             <Route path="/task" element={<SingleTask/>} />
             <Route path="/addtask" element={<AddAndEdit/>} />
             <Route path="/updatetask" element={<AddAndEdit/>} />
