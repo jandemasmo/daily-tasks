@@ -5,6 +5,8 @@ import "./Header.css"
 
 export function Header() {
     const [menuActive, useMenuActive] = useState(false);
+
+
     const ToggleMenuActive = function () {
         useMenuActive(!menuActive);
     }

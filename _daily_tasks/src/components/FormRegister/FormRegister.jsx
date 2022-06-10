@@ -24,8 +24,6 @@ export function FormRegister() {
         }
     }
 
-
-
     if(redirectToLogin){
         return <Navigate to="/login"/>
     }
@@ -61,8 +59,8 @@ export function FormRegister() {
                     </div>
                     <div className="input--content">
                         <input type="text" placeholder="Nome" name="name" id="name" value={name} onChange={event => setName(event.target.value)} />
-                        <input type="text" placeholder="E-mail" name="email" id="email" value={email} onChange={event => setEmail(event.target.value)}/>
-                        <input type="text" placeholder="Senha" name="password" id="password" value={password} onChange={event => setPassword(event.target.value)} />
+                        <input type="email" placeholder="E-mail" name="email" id="email" value={email} onChange={event => setEmail(event.target.value)}/>
+                        <input type="password" placeholder="Senha" name="password" id="password" value={password} onChange={event => setPassword(event.target.value)} />
                         <button className="button-default button_form_register" >Cadastrar</button>
                         {error && <div className="input--message">{messageError}</div>}
                     </div>

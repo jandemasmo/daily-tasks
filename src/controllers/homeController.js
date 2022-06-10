@@ -27,7 +27,7 @@ const login = async (req, res) => {
         }
 
         const token = jwt.sign({email: userVerify.email}, process.env.JWT_SECRET_TOKEN )
-        res.status(200).json({token});
+        res.status(200).json({token, userVerify});
 
     } catch (error) {
         res.status(500).json({ error: {error: "Erro interno. Tente novamente!"} });

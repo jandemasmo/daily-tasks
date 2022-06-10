@@ -1,11 +1,37 @@
+import { useState } from "react";
+import { Navigate } from "react-router-dom";
+import UsersService from "../../services/usersService";
 import "./FormLogin.css";
 
+
 export function FormLogin() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState(false)
+    const [messageError, setMessageError] = useState();
+    const [redirectToDashboard, setRedirectToDashboard] = useState(false)
+
+    const HandleSubmit = async function(event){
+        event.preventDefault();
+        try {
+            const user = await UsersService.login({email, password});
+            setRedirectToDashboard(true)
+        } catch (error) {
+            for(let key in error.response.data.message){
+                setMessageError(error.response.data.message[key])
+            }
+            setError(true)
+        }
+    }
+
+    if(redirectToDashboard){
+        return <Navigate to={"/dashboard"}/>
+    }
 
     return (
         <div className="content">
             <div className="content--form">
-                <form action="#" method="post" className="form--sign--in--out" >
+                <form onSubmit={HandleSubmit} className="form--sign--in--out" >
                     <div className="brand">
                         <a href="#">
                             <svg width="1316" height="203" viewBox="0 0 1316 203" fill="none"
@@ -36,10 +62,10 @@ export function FormLogin() {
                         </a>
                     </div>
                     <div className="input--content">
-                        <input type="text" placeholder="E-mail" name="email" id="email" />
-                        <input type="text" placeholder="Senha" name="password" id="password" />
+                        <input type="email" placeholder="E-mail" name="email" id="email" value={email} onChange={event => setEmail(event.target.value)} />
+                        <input type="password" placeholder="Senha" name="password" id="password" value={password} onChange={event => setPassword(event.target.value)} />
                         <button className="button-default button_form_login" >Login</button>
-                        <div id="box_message"></div>
+                        {error && <div className="input--message">{messageError}</div>}
                     </div>
                 </form>
             </div>
