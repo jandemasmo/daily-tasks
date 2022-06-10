@@ -5,7 +5,7 @@ const UsersService = {
     login: async (params) => {
         const response = await Api.post("/login", params );
         localStorage.setItem("user", JSON.stringify(response.data.userVerify))
-        localStorage.setItem("token", JSON.stringify(response.data.token))
+        localStorage.setItem("token", response.data.token);
     },
     
 }

@@ -5,12 +5,11 @@ import "./Header.css"
 
 export function Header() {
     const [menuActive, useMenuActive] = useState(false);
-
-
+    
     const ToggleMenuActive = function () {
         useMenuActive(!menuActive);
     }
-
+    
     return (
         <div className="container">
             <header className="topheader">
@@ -47,7 +46,8 @@ export function Header() {
                                 <path d="M17.5821 13.7631L12.6102 8.79123L17.5821 3.81939C18.1921 3.2093 18.1921 2.21977 17.5821 1.60968L16.4772 0.504826C15.8671 -0.105261 14.8776 -0.105261 14.2675 0.504826L9.29565 5.47667L4.32381 0.504826C3.71372 -0.105261 2.72419 -0.105261 2.1141 0.504826L1.00925 1.60968C0.39916 2.21977 0.39916 3.2093 1.00925 3.81939L5.98109 8.79123L1.00925 13.7631C0.39916 14.3732 0.39916 15.3627 1.00925 15.9728L2.1141 17.0776C2.72419 17.6877 3.71372 17.6877 4.32381 17.0776L9.29565 12.1058L14.2675 17.0776C14.8776 17.6877 15.8671 17.6877 16.4772 17.0776L17.5821 15.9728C18.1921 15.3627 18.1921 14.3732 17.5821 13.7631Z" fill="#C10FFF" />
                             </svg>
                         </button>
-                        <MenuLoggedOut />
+                        {/* Posteriormente verificar se a lógica abaixo é segura */}
+                        { localStorage.getItem("user") ? <MenuLoggedIn/> : <MenuLoggedOut/>}
                     </nav>
 
                 </div>
