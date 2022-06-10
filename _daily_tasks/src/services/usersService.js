@@ -7,7 +7,10 @@ const UsersService = {
         localStorage.setItem("user", JSON.stringify(response.data.userVerify))
         localStorage.setItem("token", response.data.token);
     },
-    
+    logout: () =>{
+        localStorage.removeItem("user", null);
+        localStorage.removeItem("token", null);
+    }
 }
 
 export default UsersService;

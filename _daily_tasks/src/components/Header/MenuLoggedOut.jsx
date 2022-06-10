@@ -1,9 +1,13 @@
 
+
 export function MenuLoggedOut() {
+
+
+
     return (
         <ul>
-            <li><a href="#">Sign In</a></li>
-            <li><a href="#">Sign Out</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Register</a></li>
         </ul>
     )
 }
