@@ -10,7 +10,7 @@ const UsersService = {
     logout: () =>{
         localStorage.removeItem("user", null);
         localStorage.removeItem("token", null);
-    }
+    },
 }
 
 export default UsersService;

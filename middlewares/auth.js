@@ -13,7 +13,6 @@ const userAutenticated = async (req, res, next) => {
         return res.status(401).json({message: "Acesso não permitido!"});
     }
 
-
     try {
         const user = jwt.verify(token, process.env.JWT_SECRET_TOKEN);
         req.user =  await UserSchema.findOne({email: user.email})

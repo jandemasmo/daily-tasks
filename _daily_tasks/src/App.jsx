@@ -6,7 +6,8 @@ import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { SingleTask } from "./pages/SingleTask";
-import { AddAndEdit } from "./pages/AddAndEdit";
+import { UpdateTask } from "./pages/UpdateTask";
+import { CreateTask } from "./pages/CreateTask";
 
 
 export function App() {
@@ -16,8 +17,8 @@ export function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/task" element={<WithAuth> <SingleTask/> </WithAuth>} />
-            <Route path="/addtask" element={<WithAuth> <AddAndEdit/> </WithAuth>}/>
-            <Route path="/updatetask" element={<WithAuth> <AddAndEdit/> </WithAuth>} />
+            <Route path="/updatetask" element={<WithAuth> <UpdateTask/> </WithAuth>} />
+            <Route path="/createtask" element={<WithAuth> <CreateTask/> </WithAuth>} />
         </Routes>
     )
 }
