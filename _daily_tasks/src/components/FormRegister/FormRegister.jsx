@@ -15,7 +15,9 @@ export function FormRegister() {
         event.preventDefault();
         try {
             const user = await UsersService.register({name: name, email: email, password: password});
-            setRedirectToLogin(true)
+            if(user){
+                setRedirectToLogin(true)
+            }
         } catch (error) {
             for(let key in error.response.data.message){
                 setMessageError(error.response.data.message[key])
