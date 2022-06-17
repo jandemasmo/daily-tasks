@@ -17,7 +17,7 @@ export function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/task" element={<WithAuth> <SingleTask/> </WithAuth>} />
-            <Route path="/updatetask" element={<WithAuth> <UpdateTask/> </WithAuth>} />
+            <Route path="/updatetask/:id" element={<WithAuth> <UpdateTask/> </WithAuth>} />
             <Route path="/createtask" element={<WithAuth> <CreateTask/> </WithAuth>} />
         </Routes>
     )

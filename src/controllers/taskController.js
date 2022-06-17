@@ -46,13 +46,18 @@ const addTask = async (req, res) => {
 
 const updateTask = async (req, res) => {
     try {
+        const errors = expressValidator.validationResult(req).formatWith(({msg}) => msg)
+        if(!errors.isEmpty()){
+            return res.status(401).json({ message: errors.mapped() });
+        }
+
         taskExists = await TaskSchema.findOne({_id: req.params.id, authorTask: req.user._id})
         if(taskExists){
             taskExists.title = req.body.title || taskExists.title
             taskExists.body = req.body.body || taskExists.body
         }
         await taskExists.save()
-        res.status(200).json({message: {sucess: "Task atualizada com sucesso!", taskExists}})
+        res.status(200).json({message: {sucess: "Task atualizada com sucesso!", task: taskExists}})
     } catch (error) {
         res.status(500).json({message: {error: "Erro interno tente novamente"}})
     }

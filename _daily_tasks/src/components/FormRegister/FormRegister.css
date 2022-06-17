@@ -46,10 +46,17 @@
     background-color: var(--primary-color-hover);
 }
 
-.input--message{
+.input--message-alert{
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
     color: red;
+}
+.input--message-success{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: green;
 }

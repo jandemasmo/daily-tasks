@@ -64,7 +64,7 @@ export function FormRegister() {
                         <input type="email" placeholder="E-mail" name="email" id="email" value={email} onChange={event => setEmail(event.target.value)}/>
                         <input type="password" placeholder="Senha" name="password" id="password" value={password} onChange={event => setPassword(event.target.value)} />
                         <button className="button-default button_form_register" >Cadastrar</button>
-                        {error && <div className="input--message">{messageError}</div>}
+                        {error && <div className="input--message-alert">{messageError}</div>}
                     </div>
                 </form>
             </div>

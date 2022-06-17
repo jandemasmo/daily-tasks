@@ -18,7 +18,7 @@
 .form_add_end_edit input{
     height: 4.3rem;
 }
-.button_form_edit{
+.button-default {
     background-color: var(--primary-color);
     font-weight: bold;
     color: #ffffff;
@@ -32,5 +32,5 @@
      box-shadow: 10px 10px 9px -7px rgba(0,0,0,0.37);
      cursor: pointer;
      transition: 0.5s;
-     max-width: 10rem;
+     width: 12rem;
 }

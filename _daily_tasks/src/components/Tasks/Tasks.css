@@ -17,6 +17,9 @@
      box-shadow: 10px 10px 9px -7px rgba(0,0,0,0.37);
      cursor: pointer
 }
+.add--task--link{
+    text-decoration: none;
+}
 .tasks--list{
     height: 100%;
     overflow: auto ;
@@ -32,9 +35,11 @@
 }
 .tasks--list .task--card .task--content{
     border-top: 1px solid var(--background-color);
+    width: 100%;
 }
 .tasks--list .task--card .task--content h2{
     margin: .7rem 0;
+    color: var(--primary-color);
 }
 .tasks--list .task--card p{
     display: -webkit-box;

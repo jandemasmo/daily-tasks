@@ -1,17 +1,48 @@
-import {useState} from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Header } from "../../components/Header"
 import { Footer } from "../../components/Footer"
-import  "./UpdateTask.css";
+import { TasksService } from "../../services/tasksService";
+import "./UpdateTask.css";
 
 export function UpdateTask() {
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
-    const [error, setError] =  useState(false);
+    const [error, setError] = useState(false);
     const [messageError, setMessageError] = useState(false)
+    const [messageSuccess, setMessageSuccess] = useState(false)
+    const idTask = useParams();
 
-    function HandleSubmit(){
+    async function getTask() {
+        try {
+            const task = await TasksService.getTask({ id: idTask.id });
+            setTitle(task[0].title)
+            setBody(task[0].body)
+        } catch (error) {
 
+        }
     }
+
+    async function HandleSubmit(event) {
+        event.preventDefault();
+        setError(false)
+        setMessageSuccess(false)
+        try {
+            const updateTask = await TasksService.updateTask({title: title, body: body, id: idTask.id });
+            setMessageSuccess(true)
+            setError(true)
+            setMessageError(updateTask)
+        } catch (error) {
+            setError(true)
+            for(let key in error.response.data.message){
+                setMessageError(error.response.data.message[key])
+            }
+        }
+    }
+
+    useEffect(() => {
+        getTask()
+    }, [])
 
     return (
         <div>
@@ -26,22 +57,22 @@ export function UpdateTask() {
                     </a>
                 </div>
                 <form onSubmit={HandleSubmit} className="form_add_end_edit" id="addAndEdit">
-                    <input type="text" 
-                    placeholder="Título da Task" 
-                    name="title" 
-                    id="title" 
-                    value={title} 
-                    onChange={event => setTitle(event.target.value)} />
-                    
-                    <textarea name="bory_task" 
-                    placeholder="Descreva o qeu você vai fazer hoje..."
-                    id="" cols="30" 
-                    rows="10" 
-                    value={body} 
-                    onChange={event => setBody(event.target.value)}></textarea>
+                    <input type="text"
+                        placeholder="Título da Task"
+                        name="title"
+                        id="title"
+                        value={title}
+                        onChange={event => setTitle(event.target.value)} />
 
-                    <button className="button-default button_form_edit" >Criar Task</button>
-                    {error && <div className="input--message">{messageError}</div>}
+                    <textarea name="bory_task"
+                        placeholder="Descreva o qeu você vai fazer hoje..."
+                        id="" cols="30"
+                        rows="10"
+                        value={body}
+                        onChange={event => setBody(event.target.value)}></textarea>
+
+                    <button className="button-default button_form_edit">Atualizar Task</button>
+                    {error && <div className={(messageSuccess)? "input--message-success": "input--message-alert"}>{messageError}</div>}
                 </form>
             </div>
             <Footer />
