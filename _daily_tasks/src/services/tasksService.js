@@ -5,5 +5,11 @@ export const TasksService = {
         await Api.post("/task", params,  {
             headers: {"authorization": `Bearer ${localStorage.getItem('token')}` }
         });
+    }, 
+    getAllTasks: async () => {
+        const tasks = await Api.get("/task", {
+            headers: {"authorization": `Bearer ${localStorage.getItem('token')}` }
+        })
+       return tasks.data.message.tasks
     }
 }

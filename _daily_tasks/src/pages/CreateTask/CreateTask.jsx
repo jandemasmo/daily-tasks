@@ -54,7 +54,7 @@ export function CreateTask() {
                     <textarea name="bory_task" 
                     placeholder="Descreva o qeu você vai fazer hoje..."
                     id="" cols="30" 
-                    rows="20" 
+                    rows="10" 
                     value={body} 
                     onChange={event => setBody(event.target.value)}></textarea>
 
