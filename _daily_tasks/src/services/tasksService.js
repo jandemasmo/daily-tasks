@@ -23,5 +23,10 @@ export const TasksService = {
             headers: {"authorization": `Bearer ${localStorage.getItem('token')}` }
         })
         return updatedTask.data.message.sucess
+    },
+    deleteTask: async (params) =>{
+        await Api.delete(`/task/${params.id}`, {
+            headers: {"authorization": `Bearer ${localStorage.getItem('token')}` }
+        })
     }
 }
